@@ -1,0 +1,264 @@
+---
+title: "Tarea 8"
+author: '[correo alumno(a)]'
+output: html_document 
+---
+
+---
+
+# Instrucciones
+
+- Esta tarea contiene diferentes ejercicios para analizar datos empleando modelos de regresión. En esta tarea, vamos a ajustar una serie de modelos de regresión para evaluar la relación que poseen un conjunto de factores respecto al salario de profesores universitarios de 1981 (Rabe-Hesketh & Srondal, 2012, p247).
+
+- Los datos originales han sido expandidos de forma tal, que los resultados generados por los análisis de regresión a emplear, y con diferentes muestras aleatorias, se asemejen a los resultados producidos por los datos originales. En esta tarea solo incluímos un conjunto menor de variables del ejemplo orignal.
+
+- La base de datos que emplearemos contiene a la siguientes variables:
+
+```
+
+# Muestra de valores
+id_i     <int> 1, 2, 3, 4, 5, 6, 7, 8, 9
+lwage    <dbl> 1.17522335, 2.20148897, 1
+ethn     <int> 0, 0, 0, 2, 1, 0, 0, 0, 2
+union    <int> 1, 0, 0, 0, 0, 0, 0, 0, 1
+educ     <int> 15, 15, 12, 11, 12, 14, 1
+
+
+# Contenido de las variables
+id_i     = numero único identificador de las observaciones
+lwage    = salario en logaritmo
+ethn     = etnicidad (0 = blanco, 1 = africano-americano, 2 = hispánico/latino)
+union    = membresía al sindicato (0 = no, 1 = sí)
+educ     = años de educacion (min = 3, max = 16)
+
+```
+
+- El archivo que contiene los datos, es el siguiente:
+
+```
+
+salary_1981.csv
+
+```
+
+# Referencias
+
+Rabe-Hesketh, S., & Skrondal, A. (2012). Multilevel and Longitudinal Modeling Using Stata, Volumes I and II, Third Edition (3rd ed.). Stata Press.
+
+
+---
+
+# Ejercicio 1. Abrir datos.
+
+- Inserte los códigos para abrir la base de datos `salary_1981.csv`. Llame al objeto con sus datos `datos_full`. Considere utilizar la funcion `read.csv()`. 
+
+
+```{r}
+
+# cada texto despues de un "#" es un comentario
+
+# Agregue los códigos de cada ejercicio, en estas secciones del archivo.
+
+
+
+```
+
+# Ejercicio 2. Preparar datos.
+
+- Ejecute los siguientes comandos reemplazando el valor ‘123456789’ por su Rut para crear y guardar una submuestra de 1000 en total. No altere el resto de los comandos. Guardelo en un objeto denominado `datos_salarios`. 
+
+```{r}
+
+# Fijar el seed, permite obtener la misma muestra aleatoria, 
+#                cada vez que trabaje con el codigo.
+#                Es importante que los datos de su tarea,
+#                sean generados con su RUT.
+
+library(dplyr)
+set.seed(1234567890)
+datos_salarios <- datos_full %>%
+                  dplyr::slice_sample(n = 1000)
+
+
+```
+
+> Los siguientes ejercicios se realizan utilizando el objeto denominado "datos_salarios".
+
+# Ejercicio 3. Descriptivos
+
+- Antes de ajustar modelos de regresión, es una buena práctica tener información sobre las variables que serán analizadas.
+
+- Calcule las siguientes descriptivos para cada una de las variables incluidas:
+  - Valor mínimo de cada variable
+  - Valor maximo de cada variable
+  - Proporción de casos en cada valor para las variables categóricas (union, ethn)
+  - Mediana de las variables cuantitativas (lwage, educ)
+  - Media de las variables cuantitativas (lwage, educ)
+  - Desviación estándar de las variables cuantitativas (lwage, educ) 
+
+> Nota: el detalle de los descriptivos solicitados por variable también se especifica en la sección de respuestas.
+
+```{r}
+
+# Escriba y edite el codigo que permita inspeccionar los datos obtenidos.
+
+
+
+
+```
+
+- **Respuesta**
+  - lwage
+    + mínimo: `...escriba la cifra encontrada en esta línea...`
+    + máximo: `...escriba la cifra encontrada en esta línea...`
+    + mediana: `...escriba la cifra encontrada en esta línea...`
+    + media: `...escriba la cifra encontrada en esta línea...`
+    + desviación estándar: `...escriba la cifra encontrada en esta línea...`
+  - educ
+    + mínimo: `...escriba la cifra encontrada en esta línea...`
+    + máximo: `...escriba la cifra encontrada en esta línea...`
+    + mediana: `...escriba la cifra encontrada en esta línea...`
+    + media: `...escriba la cifra encontrada en esta línea...`
+    + desviación estándar: `...escriba la cifra encontrada en esta línea...`
+  - ethn
+    + mínimo: `...escriba la cifra encontrada en esta línea...`
+    + máximo: `...escriba la cifra encontrada en esta línea...`
+    + proporción de cada categoria: `...escriba la cifra encontrada en esta línea...`
+  - union
+    + mínimo: `...escriba la cifra encontrada en esta línea...`
+    + máximo: `...escriba la cifra encontrada en esta línea...`
+    + proporción de cada categoria: `...escriba la cifra encontrada en esta línea...`
+
+
+# Ejercicio 4
+
+- Ajuste un ANOVA factorial con el logaritmo del salario por hora (“lwage”) como variable de respuesta y dos predictores: la etnia del trabajador (“ethn”) y si pertenece a un sindicato (“union").
+
+- Incluya la interacción de ambos predictores en el modelo.
+
+- Interprete los resultados. En su respuesta, indique si hay interacción entre ambos factores incluidos.
+
+
+```{r}
+
+# Escriba y edite el codigo que permita resolver el ejercicio.
+
+
+```
+
+## Respuesta
+
+`#....indicar su respuesta en las siguientes líneas, borrando este comentario.`
+
+
+# Ejercicio 5
+
+- Ajuste una regresión múltiple evaluando el efecto sobre el logaritmo del salario por hora (“lwage”) de los predictores la etnia del trabajador (“ethn”) y si pertenece a un sindicato (“union").
+
+- Incluya la interacción de ambos predictores en el modelo.
+
+- Interprete cada uno de los coeficientes en los resultados.
+
+
+```{r}
+
+# Escriba y edite el codigo que permita resolver el ejercicio.
+
+
+
+```
+
+## Respuesta
+
+`#....indicar su respuesta en las siguientes líneas, borrando este comentario.`
+
+# Ejercicio 6
+
+
+- Ajuste un ANCOVA con al logaritmo del salario por hora (“lwage”) como variable de respuesta que solo considere los efectos principales de etnia del trabajador (“ethn”), si pertenece a un sindicato (“union") e incluya la educación de los trabajadores (“educ”). No incluya interacciones en el modelo. Interprete los resultados.
+
+>Nota: recuerde que los análisis de varianza (ANOVA y ANCOVA) se calculan los componentes de varianza en orden, de tal manera que es importante el orden por el cual se ingresan las covariables en el modelo.
+
+
+```{r}
+
+# Escriba y edite el codigo que permita resolver el ejercicio.
+
+
+```
+
+## Respuesta
+
+`#....indicar su respuesta en las siguientes líneas, borrando este comentario.`
+
+# Ejercicio 7
+
+- Ajuste un modelo de regresión múltiple con el logaritmo del salario por hora (“lwage”) como variable de respuesta que considere los efectos principales de etnia del trabajador (“ethn”), si pertenece a un sindicato (“union") e incluya la educación de los trabajadores (“educ”). No incluya interacciones en el modelo. Interprete los resultados.
+
+- Interprete cada uno de los coeficientes en los resultados.
+
+
+```{r}
+
+# Escriba y edite el codigo que permita resolver el ejercicio.
+
+
+
+```
+
+## Respuesta
+
+`#....indicar su respuesta en las siguientes líneas, borrando este comentario.`
+
+
+# Ejercicio 8
+
+- El siguiente ejercicio consiste en re-parametrizar al modelo anterior. Los valores de `educ` se encuentran en años de escolaridad. Centre la variable de edad por su promedio, y re-ajuste el modelo anterior, cambiando a la variable `educ` por su versión centrada.
+
+- Para ajustar este nuevo modelo, primero calcule el promedio de educ a la muestra de datos que posee.
+
+- Luego, cree dentro de la base de datos de analisis, a la variable `educ_c`.
+
+- Ajuste el nuevo modelo.
+
+- Reinterprete el intercepto del modelo ajustado. Y explique porque los resultados generados ahora son diferentes a los del ejercicio 7.
+
+
+```{r}
+
+# Escriba y edite el codigo que permita resolver el ejercicio.
+
+
+
+```
+
+## Respuesta
+
+`#....indicar su respuesta en las siguientes líneas, borrando este comentario.`
+
+
+# Ejercicio 9
+
+- Empleando al modelo anterior (ejercicio 8), incluya los términos de interación entre etnicidad (ethn) y membresía al sindicato (union).
+
+- Empleando los resultados del modelo ajustados, conteste a la siguiente pregunta: **¿Pertenecer al sindicato es igual de beneficioso para todos los profesores condicional al grupo étnico?** En su respuesta indique sí o no; y luego en una línea separada copie la línea o sección de resultados que estaría interpretando para llegar a esta conclusión. Describa los resultados encontrados para sostener su conclusión empleando a los resultados obtenidos.
+
+
+```{r}
+
+# Escriba y edite el codigo que permita resolver el ejercicio.
+
+
+```
+
+## Respuesta
+
+- Consclusión (Sí/No): `#....indicar su respuesta en las siguientes líneas, borrando este comentario.`
+- Línea de output interpretada:
+`#....indicar su respuesta en las siguientes líneas, borrando este comentario.`
+- Descripción de resultados:
+ `#....indicar su respuesta en las siguientes líneas, borrando este comentario.`
+
+
+
+
